@@ -27,7 +27,7 @@ def merge_report_files(report_motion_df, report_vibration_df):
 
 # Function to count occurrences of Motion and Vibration events per Site Alias and Zone
 def count_entries_by_zone(merged_df, start_time_filter=None):
-    if start_time_filter:
+    if start_time_filter is not None:
         merged_df = merged_df[merged_df['Start Time'] >= start_time_filter]
 
     motion_count = merged_df[merged_df['Type'] == 'Motion'].groupby(['Zone', 'Site Alias ']).size().reset_index(name='Motion Count')
@@ -99,7 +99,7 @@ if report_motion_file and report_vibration_file:
         
         # Date and time filter
         selected_date = st.date_input("Select Start Date", value=datetime.now().date())
-        selected_time = st.time_input("Select Start Time", value=time(0, 0))  # Corrected line
+        selected_time = st.time_input("Select Start Time", value=time(0, 0))
         start_time_filter = datetime.combine(selected_date, selected_time)
 
         # Option to send notifications for prioritized zones
@@ -118,7 +118,7 @@ if report_motion_file and report_vibration_file:
                     for _, row in site_summary.iterrows():
                         message += f"#{row['Site Alias ']}: Vibration: {row['Vibration Count']}, Motion: {row['Motion Count']} \n"
                     message += f"\n@{zonal_concern}, please take care."
-                    success = send_to_telegram(message, chat_id="-00", bot_token="00")
+                    success = send_to_telegram(message, chat_id="-4625672098", bot_token="7543963915:AAGWMNVfD6BaCLuSyKAPCJgPGrdN5WyGLbo")
                     if success:
                         st.sidebar.success(f"Data for {zone} sent to Telegram successfully!")
                     else:
@@ -146,7 +146,7 @@ if report_motion_file and report_vibration_file:
                     for _, row in site_summary.iterrows():
                         message += f"#{row['Site Alias ']}: Vibration: {row['Vibration Count']}, Motion: {row['Motion Count']} \n"
                     message += f"\n@{zonal_concern}, please take care."
-                    success = send_to_telegram(message, chat_id="-00", bot_token="00")
+                    success = send_to_telegram(message, chat_id="-4625672098", bot_token="7543963915:AAGWMNVfD6BaCLuSyKAPCJgPGrdN5WyGLbo")
                     if success:
                         st.sidebar.success(f"Data for {zone} sent to Telegram successfully!")
                     else:
