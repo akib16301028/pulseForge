@@ -350,7 +350,7 @@ with tempfile.TemporaryDirectory() as temp_dir:
                         for _, row in site_summary.iterrows():
                             message += f"#{row['Site Alias ']}: Vibration: {row['Vibration Count']}, Motion: {row['Motion Count']} \n"
                         message += f"\n@{zonal_concern}, please take care."
-                        success = send_to_telegram(message, chat_id="-1001509039244", bot_token="7776982987:AAHrCszGk2lWZ9WNYx7FQraQypMWjgKPG5w")
+                        success = send_to_telegram(message, chat_id="NA", bot_token="NA")
                         if success:
                             st.sidebar.success(f"Data for {zone} sent to Telegram successfully!")
                         else:
@@ -378,7 +378,7 @@ with tempfile.TemporaryDirectory() as temp_dir:
                         for _, row in site_summary.iterrows():
                             message += f"#{row['Site Alias ']}: Vibration: {row['Vibration Count']}, Motion: {row['Motion Count']} \n"
                         message += f"\n@{zonal_concern}, please take care."
-                        success = send_to_telegram(message, chat_id="-4625672098", bot_token="7543963915:AAGWMNVfD6BaCLuSyKAPCJgPGrdN5WyGLbo")
+                        success = send_to_telegram(message, chat_id="NA", bot_token="NA")
                         if success:
                             st.sidebar.success(f"Data for {zone} sent to Telegram successfully!")
                         else:
